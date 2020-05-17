@@ -10,7 +10,7 @@ export const userInfoQuery = `
 export const createContributedRepoQuery = (username: string) => `
   query {
     user(login: "${username}") {
-      repositoriesContributedTo(last: 100, includeUserRepositories: true) {
+      repositoriesContributedTo(last: 10, includeUserRepositories: true) {
         nodes {
           isFork
           name
@@ -29,7 +29,7 @@ export const createCommittedDateQuery = (id: string, name: string, owner: string
       ref(qualifiedName: "master") {
         target {
           ... on Commit {
-            history(first: 100, author: { id: "${id}" }) {
+            history(first: 10, author: { id: "${id}" }) {
               edges {
                 node {
                   committedDate
